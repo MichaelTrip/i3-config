@@ -1,3 +1,5 @@
 # Misc config files
 
-To be places in `$HOME/.config`
+To be placed in `$HOME/.config`
+
+.dmenurc goes into the `$HOME`
