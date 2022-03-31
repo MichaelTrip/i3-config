@@ -24,4 +24,6 @@ You have to install these packages below.
 - i3bar
 - i3status
 
+## systemd
 
+Systemd scripts allow machine to sleep when lid is closed. A service is started that locks the screen after going out of suspend. Copy this to `/etc/systemd`
