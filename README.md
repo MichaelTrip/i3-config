@@ -23,6 +23,9 @@ You have to install these packages below.
 - blueman-applet
 - i3bar
 - i3status
+- redshift
+- redshift-gtk
+- geoclue
 
 ## systemd
 
