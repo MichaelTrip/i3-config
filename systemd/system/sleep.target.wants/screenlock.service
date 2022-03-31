@@ -7,7 +7,7 @@ User=michael
 Type=forking
 Environment=DISPLAY=:0
 ExecStartPre=
-ExecStart=/usr/bin/blurlock.sh
+ExecStart=/usr/bin/blurlock
 
 [Install]
 WantedBy=sleep.target
