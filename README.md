@@ -26,6 +26,8 @@ You have to install these packages below.
 - redshift
 - redshift-gtk
 - geoclue
+- light
+- caffeine
 
 ## systemd
 
