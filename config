@@ -276,7 +276,6 @@ mode "resize" {
 
 # Lock screen
 bindsym $mod+9 exec --no-startup-id $HOME/.i3/bin/blurlock
-bindsym $mod+l exec --no-startup-id $HOME/.i3/bin/blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
@@ -292,7 +291,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # redshift 
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
 
 # Start caffeine
