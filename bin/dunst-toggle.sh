@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-notify="notify-send -u low dunst"
+#notify="notify-send -u low dunst"
+notify="notify-send"
 
 case `dunstctl is-paused` in
     true)
