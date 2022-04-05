@@ -76,6 +76,9 @@ bindsym $mod+Shift+Print --release exec --no-startup-id scrot -s
 bindsym $mod+Shift+h exec xdg-open $HOME/.i3/docs/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
+# Create a button so you can pause notifcations in dunst
+bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.i3/bin/dunst-toggle.sh
+
 focus_follows_mouse yes
 
 # change focus
@@ -191,7 +194,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
-
+assign [title="win10 on QEMU/KVM"] $ws8
+assign [class="Virt-manager"] $ws7
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
@@ -220,7 +224,9 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
+for_window [class="explorer.exe"] floating enable border normal
+for_window [class="Wine"] floating enable border normal
+for_window [class="Blueman-manager"] floating enable border normal
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -296,6 +302,9 @@ exec --no-startup-id redshift-gtk
 
 # Start caffeine
 exec --no-startup-id caffeine
+
+# launch kdeconnect
+exec --no-startup-id kdeconnect-indicator
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
