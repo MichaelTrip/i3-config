@@ -236,6 +236,7 @@ for_window [class="Xfburn"] floating enable
 for_window [class="explorer.exe"] floating enable border normal
 for_window [class="Wine"] floating enable border normal
 for_window [class="Blueman-manager"] floating enable border normal
+for_window [class="Thinlinc-client"] floating enable border normal
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -295,27 +296,33 @@ bindsym $mod+Shift+Home exec --no-startup-id $HOME/.i3/bin/blurlock
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id clipit
+# Commented out xfce power manager because we are using gnome
+# exec --no-startup-id xfce4-power-manager
+# Commented out clipit because we are using gnome
+# exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
 # Start conky
-# exec --no-startup-id start_conky_green
 exec --no-startup-id conky -c $HOME/.i3/conky/scripts/conky_simple
 
 exec --no-startup-id xautolock -time 10 -locker $HOME/.i3/bin/blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
+# commented out redshift because we are using gnome
 # redshift 
-exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
-exec --no-startup-id redshift-gtk
+#exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
+#exec --no-startup-id redshift-gtk
 
 # Start caffeine
 exec --no-startup-id caffeine
 
 # launch kdeconnect
 exec --no-startup-id kdeconnect-indicator
+
+# Start some gnome things for i3-gnome
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id gnome-flashback
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
