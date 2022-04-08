@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:URWGothic-Book 11
+font xft:HackNerdFont 11
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -33,7 +33,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id $HOME/.i3/bin/dmenu_recency
 
 # launch rofi
 bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
@@ -297,7 +297,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 # Commented out xfce power manager because we are using gnome
-# exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-power-manager
 # Commented out clipit because we are using gnome
 # exec --no-startup-id clipit
 exec --no-startup-id blueman-applet

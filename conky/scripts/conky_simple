@@ -32,14 +32,14 @@ conky.config = {
     default_gauge_width = 20, default_gauge_height = 20,
 
     -- colors
-    font = 'Liberation Mono:size=10',
+    font = 'Hack Nerd Font:size=10',
     default_color = 'EEEEEE',
     color1 = 'AABBFF',
     color2 = 'FF993D',
     color3 = 'AAAAAA',
 
     -- layouting
-    template0 = [[${font Liberation Sans:bold:size=11}${color2}\1 ${color3}${hr 2}${font}]],
+    template0 = [[${font Hack Nerd Font:bold:size=11}${color2}\1 ${color3}${hr 2}${font}]],
     template1 = [[${color1}\1]],
     template2 = [[${goto 100}${color}]],
     template3 = [[${goto 180}${color}${alignr}]],
