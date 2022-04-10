@@ -32,27 +32,12 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcher
-bindsym $mod+d exec --no-startup-id $HOME/.i3/scripts/dmenu_recency
-
-# launch rofi
-#bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
-
-# launch rofi window
-#bindsym $mod+Shift+f exec --no-startup-id rofi -show window
-
-# launch rofi ssh
-#bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id $HOME/.i3/scripts/morc_menu/morc_menu
-
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
 exec --no-startup-id sleep 5; pulseaudio
-exec --no-startup-id $HOME/.i3/bin/pa-applet
+exec --no-startup-id $HOME/.i3/scripts/pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 
@@ -312,22 +297,22 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec alacritty -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill picom
+#bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+a --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id scrot
 bindsym $mod+Print --release exec --no-startup-id scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id scrot -s
-bindsym $mod+Shift+h exec xdg-open $HOME/.i3/docs/i3_help.pdf
+bindsym $mod+Shift+h exec xdg-open $HOME/.config/i3/docs/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # Create a button so you can pause notifcations in dunst
-bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.i3/scripts/dunst-toggle.sh
+bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.config/i3/scripts/dunst-toggle.sh
 
 focus_follows_mouse yes
 
 # Lock screen
-bindsym $mod+Shift+Home exec --no-startup-id $HOME/.i3/bin/blurlock
+bindsym $mod+Shift+Home exec --no-startup-id $HOME/.config/i3/scripts/blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
@@ -338,9 +323,9 @@ exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 # Start conky
-exec --no-startup-id conky -c $HOME/.i3/conky/scripts/conky_simple
+exec --no-startup-id conky -c $HOME/.config/conky/scripts/conky_simple
 
-exec --no-startup-id xautolock -time 10 -locker $HOME/.i3/scripts/blurlock
+exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/scripts/blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -470,10 +455,10 @@ strip_workspace_numbers yes
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
-bindsym $mod+d exec rofi -modi drun -show drun \
+bindsym $mod+Shift+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-#bindsym F9 exec rofi -modi drun -show drun \
+bindsym F9 exec rofi -modi drun -show drun -show-icons \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
@@ -489,3 +474,12 @@ bindsym $mod+t exec rofi -show window \
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+
+# start program launcher
+bindsym $mod+d exec --no-startup-id $HOME/.config/i3/scripts/dmenu_recency
+
+# launch rofi ssh
+bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh -config ~/.config/rofi/rofidmenu.rasi
+
+# launch categorized menu
+bindsym $mod+z exec --no-startup-id $HOME/.config/i3/scripts/morc_menu
