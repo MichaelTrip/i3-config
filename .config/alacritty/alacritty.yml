@@ -1,0 +1,5 @@
+window.opacity: 0.60
+
+
+env:
+  TERM: xterm-256color
