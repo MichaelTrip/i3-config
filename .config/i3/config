@@ -277,7 +277,7 @@ gaps outer -2
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
@@ -390,7 +390,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # commented out redshift because we are using gnome
-# redshift 
+# redshift
 #exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
 #exec --no-startup-id redshift-gtk
 
@@ -543,3 +543,6 @@ bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh -config ~/.config/rofi/
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id $HOME/.config/i3/scripts/morc_menu
+
+# keybinding in fancy rofi (automated):
+bindsym F1 exec ~/.config/i3/scripts/keyhint-2
