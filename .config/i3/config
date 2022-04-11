@@ -32,21 +32,6 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcher
-bindsym $mod+d exec --no-startup-id $HOME/.i3/bin/dmenu_recency
-
-# launch rofi
-bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
-
-# launch rofi window
-bindsym $mod+Shift+f exec --no-startup-id rofi -show window
-
-# launch rofi ssh
-bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id $HOME/.i3/bin/morc_menu/morc_menu
-
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
