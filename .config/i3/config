@@ -32,6 +32,24 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+<<<<<<< HEAD:config
+# start program launcher
+bindsym $mod+d exec --no-startup-id $HOME/.i3/bin/dmenu_recency
+
+# launch rofi
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
+
+# launch rofi window
+bindsym $mod+Shift+f exec --no-startup-id rofi -show window
+
+# launch rofi ssh
+bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh
+
+# launch categorized menu
+bindsym $mod+z exec --no-startup-id $HOME/.i3/bin/morc_menu/morc_menu
+
+=======
+>>>>>>> new-config-merge:.config/i3/config
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -265,8 +283,141 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+<<<<<<< HEAD:config
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Lock screen
+bindsym $mod+Shift+Home exec --no-startup-id $HOME/.i3/bin/blurlock
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nm-applet
+# Commented out xfce power manager because we are using gnome
+exec --no-startup-id xfce4-power-manager
+# Commented out clipit because we are using gnome
+# exec --no-startup-id clipit
+exec --no-startup-id blueman-applet
+# Start conky
+exec --no-startup-id conky -c $HOME/.i3/conky/scripts/conky_simple
+
+exec --no-startup-id xautolock -time 10 -locker $HOME/.i3/bin/blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+
+# commented out redshift because we are using gnome
+# redshift 
+#exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
+#exec --no-startup-id redshift-gtk
+
+# Start caffeine
+exec --no-startup-id caffeine
+
+# launch kdeconnect
+exec --no-startup-id kdeconnect-indicator
+
+# Start some gnome things for i3-gnome
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id gnome-flashback
+
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your 
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
+
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+bar {
+	i3bar_command i3bar
+	status_command i3status
+	position bottom
+
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+
+	bindsym button4 nop
+	bindsym button5 nop
+#   font xft:URWGothic-Book 11
+	strip_workspace_numbers yes
+
+    colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text
+        focused_workspace  #F9FAF9 #16a085 #292F34
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
+
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+=======
 # open new empty workspace
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
+>>>>>>> new-config-merge:.config/i3/config
 
 #############################
 ### settings for i3-gaps: ###
