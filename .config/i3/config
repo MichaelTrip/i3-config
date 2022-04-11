@@ -32,24 +32,6 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-<<<<<<< HEAD:config
-# start program launcher
-bindsym $mod+d exec --no-startup-id $HOME/.i3/bin/dmenu_recency
-
-# launch rofi
-bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -show-icons
-
-# launch rofi window
-bindsym $mod+Shift+f exec --no-startup-id rofi -show window
-
-# launch rofi ssh
-bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id $HOME/.i3/bin/morc_menu/morc_menu
-
-=======
->>>>>>> new-config-merge:.config/i3/config
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -283,7 +265,6 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-<<<<<<< HEAD:config
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -414,10 +395,6 @@ bindsym $mod+m bar mode toggle
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B
-=======
-# open new empty workspace
-bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
->>>>>>> new-config-merge:.config/i3/config
 
 #############################
 ### settings for i3-gaps: ###
