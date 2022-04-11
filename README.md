@@ -28,7 +28,7 @@ You have to install these packages below.
 - geoclue
 - light
 - caffeine
-- gnome-i3
+- [gnome-i3](https://github.com/i3-gnome/i3-gnome)
 - i3blocks
 - ranger
 - ueberzug
