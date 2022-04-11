@@ -77,7 +77,7 @@ bindsym XF86MonBrightnessDown exec "light -U 3; notify-send 'brightness down'"
 ##########################################
 
 # open new empty workspace
-bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
+bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
 
 # change focus
 bindsym $mod+j focus left
