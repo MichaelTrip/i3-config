@@ -1,6 +1,6 @@
 # i3-gaps config
 
-Some of the programs /binaries / scripts already reside the `bin` folder. 
+Some of the programs /binaries / scripts already reside the `.config/i3/scripts` folder.
 
 You have to install these packages below.
 
@@ -28,7 +28,15 @@ You have to install these packages below.
 - geoclue
 - light
 - caffeine
+- gnome-i3
+- i3blocks
+- ranger
+- ueberzug
 
 ## systemd
 
 Systemd scripts allow machine to sleep when lid is closed. A service is started that locks the screen after going out of suspend. Copy this to `/etc/systemd`
+
+## xorg scripts
+
+These scripts are specific for the use of a trackball.
