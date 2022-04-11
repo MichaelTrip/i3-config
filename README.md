@@ -33,10 +33,17 @@ You have to install these packages below.
 - ranger
 - ueberzug
 
-## systemd
+## How to use this:use
+
+### `.config` folder
+
+Copy the contents of the `.config`  folder to your `$HOME/.config`
+
+
+### systemd
 
 Systemd scripts allow machine to sleep when lid is closed. A service is started that locks the screen after going out of suspend. Copy this to `/etc/systemd`
 
-## xorg scripts
+### xorg.conf.d snippets
 
-These scripts are specific for the use of a trackball.
+these scripts are specific for the use of a trackball. You can place them in the `/etc/X11/xorg.conf.d` folder.
