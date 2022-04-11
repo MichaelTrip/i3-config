@@ -1,4 +1,4 @@
-# i3-gaps config
+# `i3-gaps` and `gnome-i3` config
 
 Some of the programs /binaries / scripts already reside the `.config/i3/scripts` folder.
 
@@ -28,10 +28,11 @@ You have to install these packages below.
 - geoclue
 - light
 - caffeine
-- [gnome-i3](https://github.com/i3-gnome/i3-gnome)
 - i3blocks
 - ranger
 - ueberzug
+- [gnome-i3](https://github.com/i3-gnome/i3-gnome)
+- gnome-flasback
 
 ## How to use this:use
 
@@ -47,3 +48,10 @@ Systemd scripts allow machine to sleep when lid is closed. A service is started 
 ### xorg.conf.d snippets
 
 these scripts are specific for the use of a trackball. You can place them in the `/etc/X11/xorg.conf.d` folder.
+
+
+### The results
+
+Check this nice screenshot:
+
+![Screenshot](./img/screenshot.png)
