@@ -68,8 +68,8 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "light -A i3; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "light -U 3; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "light -A 15; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "light -U 15; notify-send 'brightness down'"
 
 
 ##########################################
