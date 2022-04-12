@@ -427,7 +427,7 @@ set $move_workspace Choose left or right to move workspaces
 mode "move_workspace" {
 
         bindsym Left move workspace to output left
-        bindsym Riocht move workspace to output right
+        bindsym Right move workspace to output right
         bindsym Return mode "default"
         bindSym Escape mode "default"
 }
