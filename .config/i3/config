@@ -36,7 +36,6 @@ bindsym $mod+Shift+q kill
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id sleep 5; pulseaudio
 exec --no-startup-id $HOME/.i3/scripts/pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
@@ -480,9 +479,6 @@ exec_always --no-startup-id fix_xcursor
 # redshift
 #exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
 #exec --no-startup-id redshift-gtk
-
-# Start caffeine
-exec --no-startup-id caffeine
 
 # launch kdeconnect
 exec --no-startup-id kdeconnect-indicator
