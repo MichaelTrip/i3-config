@@ -31,14 +31,13 @@ You have to install these packages below.
 - redshift-gtk
 - geoclue
 - light
-- caffeine
 - i3blocks
 - ranger
 - ueberzug
 - [gnome-i3](https://github.com/i3-gnome/i3-gnome)
-- gnome-flasback
+- gnome-flashback
 
-## How to use this:use
+## How to use this
 
 ### `.config` folder
 
