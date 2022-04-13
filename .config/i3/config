@@ -36,7 +36,6 @@ bindsym $mod+Shift+q kill
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id $HOME/.i3/scripts/pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 
