@@ -37,6 +37,8 @@ You have to install these packages below.
 - ueberzug
 - [gnome-i3](https://github.com/i3-gnome/i3-gnome)
 - gnome-flasback
+- [xidlehook](https://gitlab.com/jD91mZM2/xidlehook)
+- [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)
 
 ## How to use this:use
 
