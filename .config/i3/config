@@ -226,7 +226,7 @@ for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
 for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
@@ -239,6 +239,8 @@ for_window [class="explorer.exe"] floating enable border normal
 for_window [class="Wine"] floating enable border normal
 for_window [class="Blueman-manager"] floating enable border normal
 for_window [class="Thinlinc-client"] floating enable border normal
+for_window [class="syncterm"] floating enable border normal
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -255,12 +257,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+End mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/.config/i3/scripts/i3exit lock, mode "default"
+    bindsym l exec --no-startup-id $HOME/.config/i3/scripts/blurlock lock, mode "default"
     bindsym s exec --no-startup-id $HOME/.config/i3/scripts/i3exit suspend, mode "default"
     bindsym u exec --no-startup-id $HOME/.config/i3/scripts/i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id $HOME/.config/i3/scripts/i3exit logout, mode "default"
     bindsym h exec --no-startup-id $HOME/.config/i3/scripts/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id $HOME/.conmfig/i3/scripts/i3exit reboot, mode "default"
+    bindsym r exec --no-startup-id $HOME/.config/i3/scripts/i3exit reboot, mode "default"
     bindsym Shift+s exec --no-startup-id $HOME/.config/i3/scripts/i3exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
@@ -567,6 +569,8 @@ exec --no-startup-id conky -c $HOME/.config/conky/scripts/conky_simple
 exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/scripts/blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+# Exec this because of cursor flickering due to a Xorg bug
+exec_always --no-startup-id $HOME/bin/fix_cursor_flickering.sh
 
 # commented out redshift because we are using gnome
 # redshift
