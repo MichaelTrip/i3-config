@@ -37,6 +37,11 @@ You have to install these packages below.
 - [gnome-i3](https://github.com/i3-gnome/i3-gnome)
 - gnome-flashback
 
+### OneLiner for arch
+```bash
+yay -Syu pavucontrol dmenu rofi pcmanfm chromium picom nitrogen scrot dunst network-manager-applet xautolock i3-gaps i3status i3bar clipit blueman redshift redshift-gtk-git geoclue light i3blocks ranger ueberzug i3-gnome
+```
+
 ## How to use this
 
 ### `.config` folder
