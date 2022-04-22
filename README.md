@@ -39,7 +39,7 @@ You have to install these packages below.
 
 ### OneLiner for arch
 ```bash
-yay -Syu pavucontrol dmenu rofi pcmanfm chromium picom nitrogen scrot dunst network-manager-applet xautolock i3-gaps i3status i3bar clipit blueman redshift redshift-gtk-git geoclue light i3blocks ranger ueberzug i3-gnome
+yay -Syu pavucontrol dmenu rofi pcmanfm chromium picom nitrogen scrot dunst network-manager-applet xautolock i3-gaps i3status i3bar clipit blueman redshift redshift-gtk-git geoclue light i3blocks ranger ueberzug i3-gnome xfce4-power-manager
 ```
 
 ## How to use this
