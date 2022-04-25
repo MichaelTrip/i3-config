@@ -32,6 +32,8 @@ You have to install these packages below.
 - geoclue
 - light
 - i3blocks
+- i3-gaps
+- i3lock
 - ranger
 - ueberzug
 - [gnome-i3](https://github.com/i3-gnome/i3-gnome)
