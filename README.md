@@ -41,6 +41,7 @@ You have to install these packages below.
 - conky
 - oh-my-zsh
 - powerlevel10k
+- gvfs-goa
 
 ### OneLiner for arch
 ```bash
