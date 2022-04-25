@@ -37,6 +37,8 @@ You have to install these packages below.
 - [gnome-i3](https://github.com/i3-gnome/i3-gnome)
 - gnome-flashback
 - conky
+- oh-my-zsh
+- powerlevel10k
 
 ### OneLiner for arch
 ```bash
