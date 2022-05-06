@@ -65,6 +65,11 @@ You have to install these packages below.
 - [wrandr](https://github.com/csicar/wrandr)
 - [wlr-randr](https://sr.ht/~emersion/wlr-randr/)
 - nerd-fonts-roboto-mono
+- pipewire
+- xdg-desktop-portal
+- xdg-desktop-portal-wlr
+- wofi
+- bemenu
 
 
 
