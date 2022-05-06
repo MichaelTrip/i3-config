@@ -61,6 +61,7 @@ You have to install these packages below.
 - fontawesome5-fonts
 - fontawesome5-fonts-web
 - brightnessctl
+- waybar
 
 
 
