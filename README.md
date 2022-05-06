@@ -62,6 +62,8 @@ You have to install these packages below.
 - fontawesome5-fonts-web
 - brightnessctl
 - waybar
+- [wrandr](https://github.com/csicar/wrandr)
+- [wlr-randr](https://sr.ht/~emersion/wlr-randr/)
 
 
 
