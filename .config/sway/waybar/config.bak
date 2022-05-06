@@ -37,7 +37,6 @@
         "battery",
         "custom/powerprofile",
         "custom/weather",
-        "custom/sunset",
         "tray",
         "clock#date",
         "clock#time"
@@ -49,7 +48,7 @@
     // -------------------------------------------------------------------------
 
     "backlight": {
-        "format": " {percent}%",
+        "format": "   {percent}%",
         "interval": 2,
         "on-scroll-up": "brightnessctl set +2%",
         "on-scroll-down": "brightnessctl set 2%-"
@@ -62,9 +61,9 @@
             "critical": 15
         },
         // Connected to AC
-        "format": "{icon} {capacity}%", // Icon: bolt
+        "format": "{icon}{capacity}%", // Icon: bolt
         // Not connected to AC
-        "format-discharging": "{icon} {capacity}%",
+        "format-discharging": "{icon}{capacity}%",
         "format-icons": [
             "", // Icon: battery-full
             "", // Icon: battery-three-quarters
@@ -75,32 +74,19 @@
         "tooltip": true
     },
     "custom/powerprofile": {
-        "format": " {}",
+        "format": "   {}",
         "exec": "~/.config/sway/scripts/ppd-status",
         "onclick": "command=~/.config/i3/scripts/power-profiles",
         "restart-interval":1,
 
     },
     "custom/weather": {
-        "format": " {}",
+        "format": "   {}",
         "exec": "~/.config/sway/scripts/weather2-sway",
         "restart-interval":1800,
 
     },
-    "custom/sunset": {
-        "interval": "once",
-        "tooltip": false,
-        "return-type": "json",
-        "format": " {icon}",
-        "format-icons": {
-            "on": "",
-            "off": ""
-        },
-        "exec": "~/.config/sway/scripts/sunset.sh",
-        "on-click": "~/.config/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
-        "exec-if": "~/.config/sway/scripts/sunset.sh check",
-        "signal": 6
-    },
+
     "clock#time": {
         "interval": 1,
         "format": "{:%H:%M:%S}",
@@ -109,7 +95,7 @@
 
     "clock#date": {
       "interval": 10,
-      "format": " {:%e %b %Y}", // Icon: calendar-alt
+      "format": "    {:%e %b %Y}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}",
       "locale": "en_US.UTF-8",
       "timezone": "Europe/Warsaw",
@@ -117,7 +103,7 @@
 
     "cpu": {
         "interval": 3,
-        "format": " {usage}% ({load})", // Icon: microchip
+        "format": "   {usage}% ({load})", // Icon: microchip
         "states": {
           "warning": 70,
           "critical": 90
@@ -128,7 +114,7 @@
       "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4 | cut -d ' ' -f1",
      // Interval set only as a fallback, as the value is updated by signal
       "interval": 10,
-      "format": " {}", // Icon: keyboard
+      "format": "    {}", // Icon: keyboard
       // Signal sent by Sway key binding (~/.config/sway/key-bindings)
       "signal": 1, // SIGHUP
       "tooltip": false,
@@ -156,15 +142,15 @@
 
     "network": {
         "interval": 3,
-        "format-wifi": " {essid}", // Icon: wifi
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠ Disconnected",
+        "format-wifi": "    {essid}", // Icon: wifi
+        "format-ethernet": "   {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr} (signal: {signalStrength}%)"
     },
 
     "pulseaudio": {
         "scroll-step": 2,
-        "format": "{icon} {volume}%",
+        "format": "{icon}   {volume}%",
         "format-muted": " Muted", // Icon: volume-mute
         "format-icons": {
             "headphones": "", // Icon: headphones
@@ -193,15 +179,15 @@
     "sway/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
-        "format": "{icon} {name}",
+        "format": "{icon}   {name}",
         "format-icons": {
-            "1": "", // Icon: firefox-browser
-            "2": "", // Icon: code
-            "3": "", // Icon: terminal
-            "4": "", // Icon: mail
-            "8": "", // Icon: book
-            "9": "", // Icon: music
-            "10": "", // Icon: cloud-download-alt
+            "1:WWW": "", // Icon: firefox-browser
+            "2:Editor": "", // Icon: code
+            "3:Terminals": "", // Icon: terminal
+            "4:Mail": "", // Icon: mail
+            "8:Documents": "", // Icon: book
+            "9:Multimedia": "", // Icon: music
+            "10:Torrent": "", // Icon: cloud-download-alt
             "urgent": "",
             "focused": "",
             "default": ""
@@ -211,7 +197,7 @@
     "temperature": {
       "critical-threshold": 75,
       "interval": 3,
-      "format": "{icon} {temperatureC}°C",
+      "format": "{icon}   {temperatureC}°C",
       "format-icons": [
           "", // Icon: temperature-empty
           "", // Icon: temperature-quarter

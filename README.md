@@ -64,6 +64,7 @@ You have to install these packages below.
 - waybar
 - [wrandr](https://github.com/csicar/wrandr)
 - [wlr-randr](https://sr.ht/~emersion/wlr-randr/)
+- nerd-fonts-roboto-mono
 
 
 
