@@ -31,7 +31,11 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+# Start bar
+exec waybar -c $HOME/.config/sway/waybar/config -s $HOME/.config/sway/waybar/style.css
 
+# Start default display script for home
+exec $HOME/bin/sway-display-home.sh
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -80,7 +84,7 @@ bindsym XF86MonBrightnessDown exec "light -U 15; notify-send 'brightness down'"
 ##########################################
 
 # open new empty workspace
-bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
+bindsym $mod+Shift+n exec --no-startup-id ~/.config/sway/scripts/empty_workspace
 
 # change focus
 bindsym $mod+j focus left
@@ -225,7 +229,7 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable border normal
+for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
@@ -240,37 +244,36 @@ for_window [class="Wine"] floating enable border normal
 for_window [class="Blueman-manager"] floating enable border normal
 for_window [class="Thinlinc-client"] floating enable border normal
 for_window [class="syncterm"] floating enable border normal
-for_window [class="org.remmina.Remmina"] fullscreen enable
-
 # switch to workspace with urgent window automatically
+
 for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+Shift+End mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/.config/i3/scripts/blurlock, mode "default"
-    bindsym s exec --no-startup-id $HOME/.config/i3/scripts/i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id $HOME/.config/i3/scripts/i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id $HOME/.config/i3/scripts/i3exit logout, mode "default"
-    bindsym h exec --no-startup-id $HOME/.config/i3/scripts/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id $HOME/.config/i3/scripts/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id $HOME/.config/i3/scripts/i3exit shutdown, mode "default"
+    bindsym l exec $lockman, mode "default"
+    bindsym s exec --no-startup-id $HOME/.config/sway/scripts/sway-exit suspend, mode "default"
+    bindsym u exec --no-startup-id $HOME/.config/sway/scripts/sway-exit switch_user, mode "default"
+    bindsym e exec --no-startup-id $HOME/.config/sway/scripts/sway-exit logout, mode "default"
+    bindsym h exec --no-startup-id $HOME/.config/sway/scripts/sway-exit hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/.config/sway/scripts/sway-exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id $HOME/.config/sway/scripts/sway-exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
+bindsym $mod+Shift+End mode "$mode_system"
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -318,25 +321,6 @@ mode "move_workspace" {
 # to:
 # background $term_background
 # Same logic applied to everything else.
-set_from_resource $term_background background
-set_from_resource $term_foreground foreground
-set_from_resource $term_color0     color0
-set_from_resource $term_color1     color1
-set_from_resource $term_color2     color2
-set_from_resource $term_color3     color3
-set_from_resource $term_color4     color4
-set_from_resource $term_color5     color5
-set_from_resource $term_color6     color6
-set_from_resource $term_color7     color7
-set_from_resource $term_color8     color8
-set_from_resource $term_color9     color9
-set_from_resource $term_color10    color10
-set_from_resource $term_color11    color11
-set_from_resource $term_color12    color12
-set_from_resource $term_color13    color13
-set_from_resource $term_color14    color14
-set_from_resource $term_color15    color15
-
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
 client.focused          #556064 #556064 #80FFF9 #FDF6E3
@@ -370,105 +354,6 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 ################
 # bar settings #
 ################
-
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
-
-# Start i3bar to display a workspace bar - This is the default configuration.
-# (plus the system information i3status finds out, if available)
-bar {
-		font pango: Noto Sans Regular 12
-		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position bottom
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
-#		    tray_output primary
-#		    tray_padding 0
-# When strip_workspace_numbers is set to yes,
-# any workspace that has a name of the form
-# “[n][:][NAME]” will display only the name.
-strip_workspace_numbers yes
-##strip_workspace_name no
-		    colors {
-		    separator          $purple
-		    background         $darkgrey
-		    statusline         $white
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-	}
-}
-
-
-############################################################
-# Example 2 ################################################
-############################################################
-
-# you can add different bars for multidisplay setups on each display:
-# set output HDMI-0 to the display you want the bar, --transparency can be set.
-# Transparency needs rgba color codes to be used where the last two letters are the transparency factor see here:
-# https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
-# #08052be6 --> e6=90%
-
-# bar {
-#	font pango: Noto Sans Regular 10
-#	status_command i3blocks -c ~/.config/i3/i3blocks-2.conf
-#	i3bar_command i3bar --transparency
-#	output HDMI-0
-#	position bottom
-#
-# When strip_workspace_numbers is set to yes,
-# any workspace that has a name of the form
-# “[n][:][NAME]” will display only the name.
-#strip_workspace_numbers yes
-##strip_workspace_name no
-#
-#	colors {
-#		separator          $purple
-#		background         $darkbluetrans
-#        	statusline         $white
-#					border		bg		txt		indicator
-#		focused_workspace	$lighterblue	$lighterblue	$darkblue	$purple
-#		active_workspace	$lightdblue	$lightdblue	$darkblue	$purple
-#		inactive_workspace	$darkblue	$darkblue	$lightdblue	$purple
-#		urgent_workspace	$urgentred	$urgentred	$white		$purple
-#	}
-#}
-
-############################################################
-# Example 3 ################################################
-############################################################
-
-## Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-#	i3bar_command i3bar
-#	status_command i3status
-#	position bottom
-#
-### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-##	tray_output primary
-##	tray_output eDP1
-#
-#	bindsym button4 nop
-#	bindsym button5 nop
-##   font xft:URWGothic-Book 11
-#	strip_workspace_numbers yes
-#
-#    colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
-#
-##                      border  backgr. text
-#        focused_workspace  #F9FAF9 #16a085 #292F34
-#        active_workspace   #595B5B #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16a085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16a085 #FDF6E3 #E5201D
-#    }
-#}
 
 #############################
 ### settings for i3-gaps: ###
@@ -535,83 +420,20 @@ mode "$mode_gaps_outer" {
 # Start Applications
 bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+F4 exec evolution
+# bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec alacritty -e 'mocp'
-#bindsym $mod+t exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+t exec --no-startup-id picom -b
-bindsym $mod+Shift+a --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id scrot
+bindsym $mod+Shift+a --release exec "killall dunst; exec notify-send 'restart dunst'; dunst"
+bindsym Print exec --no-startup-id grim
 bindsym $mod+Print --release exec --no-startup-id scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id scrot -s
-bindsym $mod+Shift+h exec xdg-open $HOME/.config/i3/docs/i3_help.pdf
+bindsym $mod+Shift+h exec xdg-open $HOME/.config/sway/docs/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # Create a button so you can pause notifcations in dunst
-bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.config/i3/scripts/dunst-toggle.sh
-
-#############################################
-# autostart applications/services on login: #
-#############################################
-# Lock screen
-bindsym $mod+Shift+Home exec --no-startup-id $HOME/.config/i3/scripts/blurlock
+bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.config/sway/scripts/dunst-toggle.sh
 
 
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id picom -b
-exec --no-startup-id nm-applet
-# Commented out xfce power manager because we are using gnome
-exec --no-startup-id xfce4-power-manager
-# Commented out clipit because we are using gnome
-#exec --no-startup-id clipit
-#exec --no-startup-id blueman-applet
-# Start conky
-exec --no-startup-id conky -c $HOME/.config/conky/scripts/conky_simple
-
-# Start caffeine
-exec --no-startup-id caffeine
-
-exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/scripts/blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-# Exec this because of cursor flickering due to a Xorg bug
-exec_always --no-startup-id $HOME/bin/fix_cursor_flickering.sh
-exec --no-startup-id pamac-tray
-
-# commented out redshift because we are using gnome
-# redshift
-#exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
-#exec --no-startup-id redshift-gtk
-
-# launch kdeconnect
-exec --no-startup-id kdeconnect-indicator
-
-# Start some gnome things for i3-gnome
-exec --no-startup-id /usr/lib/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
-exec --no-startup-id gnome-flashback
-
-# num lock activated
-exec --no-startup-id numlockx on
-
-# exec autotiling
-exec_always --no-startup-id autotiling
-# disable power saving (for example if using xscreensaver)
-#exec --no-startup-id xset -dpms
-
-# use xautolock to use autosuspend rules for mobile devices
-# https://wiki.archlinux.org/title/Session_lock#xautolock
-#exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
-
-
-# xscreensaver
-# https://www.jwz.org/xscreensaver
-#exec --no-startup-id xscreensaver --no-splash
-
-# Desktop notifications
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 
 #####################################
@@ -631,8 +453,8 @@ bindsym F9 exec rofi -modi drun -show drun -show-icons \
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-bindsym F10 exec rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym F10 exec rofi -show window \
+#		-config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
 
@@ -641,16 +463,78 @@ bindsym F10 exec rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id $HOME/.config/i3/scripts/dmenu_recency
+bindsym $mod+d exec --no-startup-id $HOME/.config/sway/scripts/dmenu_recency
 
 # launch rofi ssh
 bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh -config ~/.config/rofi/rofidmenu.rasi
 
 # launch categorized menu
-bindsym $mod+z exec --no-startup-id $HOME/.config/i3/scripts/morc_menu
+bindsym $mod+z exec --no-startup-id $HOME/.config/sway/scripts/morc_menu
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec ~/.config/i3/scripts/keyhint-2
+bindsym F1 exec ~/.config/sway/scripts/keyhint-2
 
 # Power Profiles menu switcher (rofi)
-bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
+bindsym $mod+Shift+p exec ~/.config/sway/scripts/power-profiles
+
+#############################################
+# autostart applications/services on login: #
+#############################################
+# Lock screen
+
+set $lockman exec bash ~/.config/sway/scripts/lockman.sh
+bindsym $mod+Shift+Home exec $lockman
+#bindsym $mod+Shift+Home exec --no-startup-id $HOME/.config/sway/scripts/blurlock-sway
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+#exec --no-startup-id sleep 2; nitrogen --restore
+exec --no-startup-id nm-applet --indicator
+# Commented out xfce power manager because we are using gnome
+exec --no-startup-id xfce4-power-manager
+# Commented out clipit because we are using gnome
+exec --no-startup-id clipit
+exec --no-startup-id blueman-applet
+# Set background with the created azotebg file
+exec $HOME/.azotebg
+
+#Locking screen after 300 seconds
+
+set $lock $HOME/.config/sway/scripts/blurlock-sway-lockonly
+exec swayidle -w \
+    timeout 600 $lock \
+    timeout 570 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $lock
+
+# launch kdeconnect
+exec --no-startup-id kdeconnect-indicator
+
+# num lock activated
+
+input type:keyboard {
+  xkb_capslock disabled
+  xkb_numlock enable
+  xkb_layout "us(intl)"
+#  xkb_options "grp:shift_caps_switch,compose:prsc"
+}
+
+input "1133:50184:Logitech_USB_Trackball" {
+    scroll_method on_button_down
+}
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0 # set mouse sensitivity (between -1 and 1)
+}
+
+# Desktop notifications
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+
+
+
+include /etc/sway/config.d/*
+
+

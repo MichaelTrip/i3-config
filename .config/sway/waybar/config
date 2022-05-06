@@ -181,13 +181,13 @@
         "disable-scroll": true,
         "format": "{icon}   {name}",
         "format-icons": {
-            "1:WWW": "", // Icon: firefox-browser
-            "2:Editor": "", // Icon: code
-            "3:Terminals": "", // Icon: terminal
-            "4:Mail": "", // Icon: mail
-            "8:Documents": "", // Icon: book
-            "9:Multimedia": "", // Icon: music
-            "10:Torrent": "", // Icon: cloud-download-alt
+            "1": "", // Icon: firefox-browser
+            "2": "", // Icon: code
+            "3": "", // Icon: terminal
+            "4": "", // Icon: mail
+            "8": "", // Icon: book
+            "9": "", // Icon: music
+            "10": "", // Icon: cloud-download-alt
             "urgent": "",
             "focused": "",
             "default": ""
