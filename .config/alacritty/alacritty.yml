@@ -1,4 +1,6 @@
-window.opacity: 0.60
+window:
+  opacity: 0.60
+
 
 
 font:

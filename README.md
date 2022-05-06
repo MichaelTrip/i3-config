@@ -43,6 +43,27 @@ You have to install these packages below.
 - powerlevel10k
 - gvfs-goa
 
+## Additional packages for sway
+- sway
+- swayidle
+- swaylock
+- swaybg
+- grim
+- grimshot
+- wev
+- wlsunset
+- kanshi
+- mako
+- slurp
+- azote
+- fontawesome-fonts
+- fontawesome-fonts-web
+- fontawesome5-fonts
+- fontawesome5-fonts-web
+- brightnessctl
+
+
+
 ### OneLiner for arch
 ```bash
 yay -Syu pavucontrol dmenu rofi pcmanfm chromium picom nitrogen scrot dunst network-manager-applet xautolock i3-gaps i3status i3bar clipit blueman redshift redshift-gtk-git geoclue light i3blocks ranger ueberzug i3-gnome xfce4-power-manager conky powerlevel-10k 
