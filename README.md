@@ -70,6 +70,7 @@ You have to install these packages below.
 - xdg-desktop-portal-wlr
 - wofi
 - bemenu
+- [Rofi fork for wayland](https://github.com/lbonn/rofi) or aur package `aur/rofi-lbonn-wayland`
 
 
 
