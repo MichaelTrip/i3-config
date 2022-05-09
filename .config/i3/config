@@ -240,8 +240,8 @@ for_window [class="Wine"] floating enable border normal
 for_window [class="Blueman-manager"] floating enable border normal
 for_window [class="Thinlinc-client"] floating enable border normal
 for_window [class="syncterm"] floating enable border normal
-
 # switch to workspace with urgent window automatically
+
 for_window [urgent=latest] focus
 
 # reload the configuration file
@@ -257,7 +257,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+End mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/.config/i3/scripts/blurlock lock, mode "default"
+    bindsym l exec --no-startup-id $HOME/.config/i3/scripts/blurlock, mode "default"
     bindsym s exec --no-startup-id $HOME/.config/i3/scripts/i3exit suspend, mode "default"
     bindsym u exec --no-startup-id $HOME/.config/i3/scripts/i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id $HOME/.config/i3/scripts/i3exit logout, mode "default"
@@ -532,7 +532,7 @@ mode "$mode_gaps_outer" {
 # Application binding to specific keys: #
 #########################################
 # Start Applications
-bindsym $mod+F2 exec chromium
+bindsym $mod+F2 exec chromium-freeworld
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
@@ -549,59 +549,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # Create a button so you can pause notifcations in dunst
 bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.config/i3/scripts/dunst-toggle.sh
 
-#############################################
-# autostart applications/services on login: #
-#############################################
-# Lock screen
-bindsym $mod+Shift+Home exec --no-startup-id $HOME/.config/i3/scripts/blurlock
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-exec --no-startup-id nm-applet
-# Commented out xfce power manager because we are using gnome
-exec --no-startup-id xfce4-power-manager
-# Commented out clipit because we are using gnome
-# exec --no-startup-id clipit
-exec --no-startup-id blueman-applet
-# Start conky
-exec --no-startup-id conky -c $HOME/.config/conky/scripts/conky_simple
 
-exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/scripts/blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-# Exec this because of cursor flickering due to a Xorg bug
-exec_always --no-startup-id $HOME/bin/fix_cursor_flickering.sh
-
-# commented out redshift because we are using gnome
-# redshift
-#exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
-#exec --no-startup-id redshift-gtk
-
-# launch kdeconnect
-exec --no-startup-id kdeconnect-indicator
-
-# Start some gnome things for i3-gnome
-exec --no-startup-id /usr/lib/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
-exec --no-startup-id gnome-flashback
-
-# num lock activated
-exec --no-startup-id numlockx on
-
-# disable power saving (for example if using xscreensaver)
-#exec --no-startup-id xset -dpms
-
-# use xautolock to use autosuspend rules for mobile devices
-# https://wiki.archlinux.org/title/Session_lock#xautolock
-#exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
-
-
-# xscreensaver
-# https://www.jwz.org/xscreensaver
-#exec --no-startup-id xscreensaver --no-splash
-
-# Desktop notifications
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 
 #####################################
@@ -644,3 +592,59 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
+
+#############################################
+# autostart applications/services on login: #
+#############################################
+# Lock screen
+bindsym $mod+Shift+Home exec --no-startup-id $HOME/.config/i3/scripts/blurlock
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id picom -b
+exec --no-startup-id sleep 2; nitrogen --restore
+exec --no-startup-id nm-applet
+# Commented out xfce power manager because we are using gnome
+exec --no-startup-id xfce4-power-manager
+# Commented out clipit because we are using gnome
+#exec --no-startup-id clipit
+#exec --no-startup-id blueman-applet
+
+#Commented out because we are using gnome lock
+exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/scripts/blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+# Exec this because of cursor flickering due to a Xorg bug
+exec_always --no-startup-id $HOME/bin/fix_cursor_flickering.sh
+
+# commented out redshift because we are using gnome
+# redshift
+exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
+exec --no-startup-id redshift-gtk
+
+# launch kdeconnect
+exec --no-startup-id kdeconnect-indicator
+
+# Start some gnome things for i3-gnome
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id gnome-flashback
+
+# num lock activated
+exec --no-startup-id numlockx on
+
+# disable power saving (for example if using xscreensaver)
+#exec --no-startup-id xset -dpms
+
+# use xautolock to use autosuspend rules for mobile devices
+# https://wiki.archlinux.org/title/Session_lock#xautolock
+#exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
+# Strt Conky
+exec --no-startup-id conky -c $HOME/.config/conky/scripts/conky_simple
+
+# xscreensaver
+# https://www.jwz.org/xscreensaver
+#exec --no-startup-id xscreensaver --no-splash
+
+# Desktop notifications
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
