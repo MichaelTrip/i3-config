@@ -16,7 +16,7 @@
     "position": "bottom",
 
     // If height property would be not present, it'd be calculated dynamically
-    "height": 32,
+//    "height": 32,
 
     "modules-left": [
         "sway/workspaces",
@@ -31,7 +31,7 @@
         "memory",
         "cpu",
         "temperature",
-        "custom/keyboard-layout",
+   //     "custom/keyboard-layout",
         "backlight",
         "pulseaudio",
         "battery",

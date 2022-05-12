@@ -17,6 +17,8 @@ default_floating_border normal
 # Hide borders
 hide_edge_borders none
 
+output eDP-1 pos 21,-14 scale 1 res 1920x1080
+output DP-3 pos 1939,-14 scale 1 res 2560x1080
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -35,7 +37,7 @@ bindsym $mod+Return exec alacritty
 exec waybar -c $HOME/.config/sway/waybar/config -s $HOME/.config/sway/waybar/style.css
 
 # Start default display script for home
-exec $HOME/bin/sway-display-home.sh
+#exec $HOME/bin/sway-display-home.sh
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -230,7 +232,7 @@ for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
 for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable border normal
+for_window [app_id="^pavucontrol$"] floating enable border normal
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
@@ -300,11 +302,11 @@ mode "resize" {
 
 # Create a keybinding so we can move workspaces between screens
 bindsym $mod+Shift+m mode "move_workspace"
-set $move_workspace Choose left or right to move workspaces
+set $move_workspace "Choose left or right to move workspaces"
 mode "move_workspace" {
 
-        bindsym Left move workspace to output left
-        bindsym Right move workspace to output right
+        bindsym Left move workspace to output eDP-1
+        bindsym Right move workspace to output DP-3
         bindsym Return mode "default"
         bindSym Escape mode "default"
 }
@@ -418,7 +420,7 @@ mode "$mode_gaps_outer" {
 # Application binding to specific keys: #
 #########################################
 # Start Applications
-bindsym $mod+F2 exec chromium
+bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
