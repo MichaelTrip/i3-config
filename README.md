@@ -71,6 +71,7 @@ You have to install these packages below.
 - wofi
 - bemenu
 - [Rofi fork for wayland](https://github.com/lbonn/rofi) or aur package `aur/rofi-lbonn-wayland`
+- [Swayr a window selector for wayland](https://sr.ht/~tsdh/swayr/) - or aur package `swayr`
 
 
 
