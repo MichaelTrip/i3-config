@@ -536,7 +536,9 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 
-
+exec --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY > /dev/null
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets
+exec --no-startup-id /usr/lib/goa-daemon --replace
 include /etc/sway/config.d/*
 
 
