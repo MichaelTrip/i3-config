@@ -195,13 +195,16 @@
         "disable-scroll": true,
         "format": "{icon} {name}",
         "format-icons": {
-            "1": "", // Icon: firefox-browser
-            "2": "", // Icon: code
-            "3": "", // Icon: terminal
-            "4": "", // Icon: mail
-            "8": "", // Icon: book
-            "9": "", // Icon: music
-            "10": "", // Icon: cloud-download-alt
+            "1": "", // Icon: nf-fa-chat
+            "2": "", // Icon: nf-mdi-email
+            "3": "", // Icon: nf-fa-whatsapp
+            "4": "", // Icon: nf-fa-music
+            "5": "", // Icon: nf-fa-firefox
+            "6": "", // Icon: nf-oct-terminal
+            "7": "", // Icon: nf-linux-docker
+            "8": "", // Icon: nf-fa-linux
+            "9": "", // Icon: nf-dev-code
+            "10": "", // Icon: nf-fa-cloud
             "urgent": "",
             "focused": "",
             "default": ""
