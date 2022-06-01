@@ -426,9 +426,9 @@ bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec alacritty -e 'mocp'
 bindsym $mod+Shift+a --release exec "killall dunst; exec notify-send 'restart dunst'; dunst"
-bindsym Print exec --no-startup-id grim
-bindsym $mod+Print --release exec --no-startup-id scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id scrot -s
+bindsym Print exec --no-startup-id grimshot --notify save active
+bindsym $mod+Print --release exec --no-startup-id grimshot --notify save window
+bindsym $mod+Shift+Print --release exec --no-startup-id grimshot --notify save area
 bindsym $mod+Shift+h exec xdg-open $HOME/.config/sway/docs/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -512,6 +512,8 @@ exec swayidle -w \
 # launch kdeconnect
 exec --no-startup-id kdeconnect-indicator
 
+# Start pamac-tray
+exec --no-startup-id pamac-tray
 # num lock activated
 
 input type:keyboard {
