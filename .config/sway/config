@@ -77,10 +77,11 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "light -A 15; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "light -U 15; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "light -A 15; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "light -U 15; notify-send 'brightness down'"
 
-
+bindsym XF86MonBrightnessUp exec "brightnessctl -q set 15%+; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "brightnessctl -q set 15%-; notify-send 'brightness down'"
 ##########################################
 # configuration for workspace behaviour: #
 ##########################################
@@ -474,7 +475,7 @@ bindsym $mod+Shift+v exec --no-startup-id rofi -show ssh -config ~/.config/rofi/
 bindsym $mod+z exec --no-startup-id $HOME/.config/sway/scripts/morc_menu
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec ~/.config/sway/scripts/keyhint-2
+bindsym $mod+F1 exec ~/.config/sway/scripts/keyhint-2
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec ~/.config/sway/scripts/power-profiles
