@@ -1,7 +1,13 @@
 #!/bin/sh
 lock() {
-    swaylock -f -c 000000
-}
+#    swaylock -f -c 000000
+    grimshot save screen /tmp/screenshot.png
+    convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+    rm /tmp/screenshot.png
+    swaylock -f -i /tmp/screenshotblur.png
+
+
+  }
 
 case "$1" in
     lock)
