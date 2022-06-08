@@ -4,6 +4,7 @@
 # Pretty much re-written by Mina Nagy (mnzaki)
 # Edited by Chrysostomus to create/source .dmenurc
 
+export TERMINAL_CMD="alacritty -e"
 if ! [ -f "$HOME/.dmenurc" ]; then
 	cp /usr/share/dmenu/dmenurc $HOME/.dmenurc
 fi
