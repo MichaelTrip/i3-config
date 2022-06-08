@@ -78,6 +78,7 @@ You have to install these packages below.
 - pamixer
 - wdisplays
 - pulsemixer
+- playerctl
 
 
 
