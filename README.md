@@ -56,14 +56,11 @@ You have to install these packages below.
 - mako
 - slurp
 - azote
-- fontawesome-fonts
-- fontawesome-fonts-web
-- fontawesome5-fonts
-- fontawesome5-fonts-web
+- ttf-font-awesome
+- otf-font-awesome
 - brightnessctl
 - waybar
-- [wrandr](https://github.com/csicar/wrandr)
-- [wlr-randr](https://sr.ht/~emersion/wlr-randr/)
+- wdisplays
 - nerd-fonts-roboto-mono
 - pipewire
 - xdg-desktop-portal
