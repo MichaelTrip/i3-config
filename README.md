@@ -74,6 +74,7 @@ You have to install these packages below.
 - brightnessctl
 - pamixer
 - wdisplays
+- [wrandr](https://github.com/csicar/wrandr)
 - pulsemixer
 - playerctl
 
