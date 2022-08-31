@@ -82,15 +82,15 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 #bindsym XF86MonBrightnessUp exec "brightnessctl -q set 15%+; notify-send 'brightness up'"
 
-bindsym XF86AudioRaiseVolume exec volumectl up
-bindsym XF86AudioLowerVolume exec volumectl down
+bindsym XF86AudioRaiseVolume exec volumectl -u up
+bindsym XF86AudioLowerVolume exec volumectl -u down
 bindsym XF86AudioMute exec volumectl toggle-mute
 bindsym XF86AudioMicMute exec volumectl -m toggle-mute
 
 bindsym XF86MonBrightnessUp exec lightctl up
 bindsym XF86MonBrightnessDown exec lightctl down
 
-exec --no-startup-id avizo-service
+exec "avizo-service"
 
 #bindsym XF86MonBrightnessDown exec "brightnessctl -q set 15%-; notify-send 'brightness down'"
 ##########################################
@@ -438,7 +438,7 @@ bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec alacritty -e 'mocp'
 bindsym $mod+Shift+a --release exec "killall dunst; exec notify-send 'restart dunst'; dunst"
-bindsym Print exec --no-startup-id grimshot --notify save active
+bindsym Print exec --no-startup-id grimshot --notify save output
 bindsym $mod+Print exec --no-startup-id grimshot --notify save window
 bindsym $mod+Shift+Print  exec --no-startup-id grimshot --notify save area
 bindsym $mod+Shift+h exec xdg-open $HOME/.config/sway/docs/i3_help.pdf
@@ -459,16 +459,10 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id $HOME/.config/sway/scripts/dun
 bindsym $mod+Shift+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-bindsym F9 exec rofi -modi drun -show drun -show-icons \
-#		-config ~/.config/rofi/rofidmenu.rasi
-
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
-
-#bindsym F10 exec rofi -show window \
-#		-config ~/.config/rofi/rofidmenu.rasi
 
 
 # start program launcher
@@ -497,7 +491,12 @@ bindsym $mod+Shift+Home exec $lockman
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+#exec --no-startup-id sleep 2; nitrogen --restore
 exec --no-startup-id nm-applet --indicator
+# Commented out xfce power manager because we are using gnome
+exec --no-startup-id xfce4-power-manager
+# Commented out clipit because we are using gnome
+exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 # Set background with the created azotebg file
 exec --no-startup-id $HOME/.azotebg
@@ -532,8 +531,8 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     tap enabled
     natural_scroll enabled
     dwt enabled
-    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
-    pointer_accel 0 # set mouse sensitivity (between -1 and 1)
+    accel_profile "adaptive" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
 }
 
 # Desktop notifications
