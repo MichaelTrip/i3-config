@@ -18,7 +18,7 @@ default_floating_border normal
 hide_edge_borders none
 
 output eDP-1 pos 21,-14 scale 1 res 1920x1080
-output DP-3 pos 1939,-14 scale 1 res 2560x1080
+#output DP-3 pos 1939,-14 scale 1 res 2560x1080
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -286,6 +286,23 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+set $display_mode (n)ormal, (e)xternal+1, (d)ual no laptop screen
+mode "$display_mode" {
+      bindsym d exec "wlr-randr --output DP-3 --mode 2560x1080 --pos 1918,0 --scale 1.00 --on; wlr-randr --output DP-1 --mode 1920x1080 --pos 0,217 --scale 1.00 --on; wlr-randr --output eDP-1 --off;"
+#      bindsym n exec "wlr-randr --output eDP-1 --mode 1920x1080 --pos 0,301 --scale 1.00 --on; 
+      bindsym n exec "wlr-randr --output DP-1 --off; wlr-randr --output DP-3 --off; wlr-randr --output -eDP-1 --mode 1920x1080 --on" 
+      bindsym e exec "wlr-randr --output DP-1 --off; wlr-randr --output DP-3 --mode 2560x1080 --pos 1918,0 --scale 1.00 --on; wlr-randr --output eDP-1 --mode 1920x1080 --pos 0,301 --scale 1.00 --on;"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    
+}
+
+
+bindsym $mod+Ctrl+d mode "$display_mode"
+
+
 
 bindsym $mod+Shift+End mode "$mode_system"
 # Resize window (you can also use the mouse for that)
