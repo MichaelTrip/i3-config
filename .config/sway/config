@@ -334,7 +334,7 @@ bindsym $mod+Shift+m mode "move_workspace"
 set $move_workspace "Choose left or right to move workspaces"
 mode "move_workspace" {
 
-        bindsym Left move workspace to output eDP-1
+        bindsym Left move workspace to output DP-1
         bindsym Right move workspace to output DP-3
         bindsym Return mode "default"
         bindSym Escape mode "default"
@@ -504,6 +504,9 @@ bindsym $mod+Shift+p exec ~/.config/sway/scripts/power-profiles
 
 set $lockman exec bash ~/.config/sway/scripts/lockman.sh
 bindsym $mod+Shift+Home exec $lockman
+
+# lock without screen off
+bindsym $mod+Home exec swaylock -l -f -k --color=000000
 #bindsym $mod+Shift+Home exec --no-startup-id $HOME/.config/sway/scripts/blurlock-sway
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -520,12 +523,12 @@ exec --no-startup-id $HOME/.azotebg
 exec --no-startup-id nextcloud --background
 #Locking screen after 300 seconds
 
-set $lock $HOME/.config/sway/scripts/blurlock-sway-lockonly
-exec swayidle -w \
-    timeout 600 $lock \
-    timeout 570 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock
+#set $lock $HOME/.config/sway/scripts/blurlock-sway-lockonly
+#exec swayidle -w \
+#    timeout 600 $lock \
+#    timeout 570 'swaymsg "output * dpms off"' \
+#    resume 'swaymsg "output * dpms on"' \
+#    before-sleep $lock
 
 # launch kdeconnect
 exec --no-startup-id kdeconnect-indicator
